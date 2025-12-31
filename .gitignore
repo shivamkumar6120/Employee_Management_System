@@ -1,0 +1,22 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.pdb
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+
+# Packages
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Solution Files
+*.sln
+
+# Optional: Add project files themselves if you have many, but typically you track these
+# EmployeeManagementSystem/*.csproj
