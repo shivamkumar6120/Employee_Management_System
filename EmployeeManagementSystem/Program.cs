@@ -1,15 +1,20 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace EmployeeManagementSystem
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            //This line creates a WebApplicationBuilder instance with preconfigured defaults, 
+            //such as setting up the internal Kestrel web server, reading configuration files
+            //(appsettings.json), and configuring logging.
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            var app = builder.Build(); //builds the final WebApplication instance
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
