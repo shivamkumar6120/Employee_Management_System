@@ -10,12 +10,12 @@ namespace EmployeeManagementSystem.Models
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress]
 
-        public string Email { get; set;  }
+        public string Email { get; set; } = string.Empty;
 
         [StringLength (25)]
         public string? Department { get; set;  }
