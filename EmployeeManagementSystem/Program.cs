@@ -1,3 +1,4 @@
+using Azure.Core;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace EmployeeManagementSystem
@@ -13,6 +14,10 @@ namespace EmployeeManagementSystem
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //One repository instance per request --- Best for DB access
+            builder.Services.AddScoped<EmployeeManagementSystem.Data.EmployeeRepository>();
+
 
             var app = builder.Build(); //builds the final WebApplication instance
 
