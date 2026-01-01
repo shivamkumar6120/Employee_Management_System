@@ -20,3 +20,12 @@ packages/
 
 # Optional: Add project files themselves if you have many, but typically you track these
 # EmployeeManagementSystem/*.csproj
+
+
+
+# Ignore specific files
+EmployeeManagementSystem/Views/Employee/Edit.cshtml
+table.sql
+
+# Or ignore all .sql files
+# *.sql
