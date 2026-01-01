@@ -76,7 +76,7 @@ namespace EmployeeManagementSystem.Data
         }
 
 
-        public Employee? GetEmployeeId(int id)
+        public Employee? GetEmployeeById(int id)
         {
             Employee? employee = null;
             using SqlConnection connection = new(_connectionString);
@@ -110,6 +110,41 @@ namespace EmployeeManagementSystem.Data
         }
 
 
+        public void UpdateEmployee(Employee employee)
+        {
+            using SqlConnection connection = new(_connectionString);
+
+            string query = @"UPDATE Employees
+                     SET Name = @Name,
+                         Email = @Email,
+                         Department = @Department,
+                         Salary = @Salary
+                     WHERE Id = @Id";
+
+            using SqlCommand command = new(query, connection);
+
+            command.Parameters.AddWithValue("@Id", employee.Id);
+            command.Parameters.AddWithValue("@Name", employee.Name);
+            command.Parameters.AddWithValue("@Email", employee.Email);
+            command.Parameters.AddWithValue("@Department", (object?)employee.Department ?? DBNull.Value);
+            command.Parameters.AddWithValue("@Salary", employee.Salary);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            using SqlConnection connection = new(_connectionString);
+
+            string query = "DELETE FROM Employees WHERE Id = @Id";
+
+            using SqlCommand command = new(query, connection);
+            command.Parameters.AddWithValue("@Id", id);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
 
 
     }
