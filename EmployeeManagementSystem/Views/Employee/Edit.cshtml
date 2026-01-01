@@ -1,0 +1,56 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h2>Edit Employee</h2>
+
+<form asp-action="Edit" method="post">
+
+    @Html.AntiForgeryToken()
+
+    @* Hidden field for Id (VERY IMPORTANT) *@
+    @Html.HiddenFor(m => m.Id)
+
+    <div>
+        <label>Name</label><br />
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <br />
+
+    <div>
+        <label>Email</label><br />
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <br />
+
+    <div>
+        <label>Department</label><br />
+        @Html.TextBoxFor(m => m.Department)
+    </div>
+
+    <br />
+
+    <div>
+        <label>Salary</label><br />
+        @Html.TextBoxFor(m => m.Salary)
+        @Html.ValidationMessageFor(m => m.Salary)
+    </div>
+
+    <br />
+
+    <button type="submit">Update</button>
+    <a asp-action="List">Cancel</a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
